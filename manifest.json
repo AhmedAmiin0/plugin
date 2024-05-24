@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Sakani Unit recurrent reservation",
+  "description": "Automatically reserve a unit via a specific land project from sakani.sa",
+  "version": "1.0",
+  "author": { "email": "abdelrahman.m.fcih@gmail.com" },
+  "action": { "default_popup": "popup.html" },
+  "icons": {
+    "16": "images/logo.png",
+    "32": "images/logo.png",
+    "48": "images/logo.png",
+    "128": "images/logo.png"
+  },
+  "background": { "service_worker": "background.js" },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "offscreen",
+    "webNavigation",
+    "scripting",
+    "tabs",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.sakani.sa/*"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

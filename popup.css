@@ -1,0 +1,209 @@
+.form__group,
+.waiting-container {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.waiting-container input,
+.waiting-container label,
+button {
+  cursor: pointer
+}
+
+.form__group,
+button,
+button span {
+  position: relative
+}
+
+button i::after,
+button i::before {
+  width: 10px;
+  height: 2px;
+  border: 2px solid var(--clr);
+  transition: .2s
+}
+
+button i::after,
+button i::before,
+button::before {
+  content: "";
+  position: absolute;
+  background: #272822
+}
+
+*,
+* *,
+.loader:before {
+  font-family: Cairo, sans-serif
+}
+
+*,
+* * {
+  color: #ababad
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  align-items: center;
+  font-size: 1.5rem;
+  background-color: #222;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-width: 400px;
+  text-align: center;
+  align-items: center;
+  direction: rtl
+}
+
+.waiting-container,
+button {
+  color: #fff;
+  font-size: 1rem
+}
+
+.container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly
+}
+
+.form__group {
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  color: #fff;
+  padding: 7px 0;
+  background: 0 0;
+  transition: border-color .2s;
+  z-index: 999
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1
+}
+
+.form__field:invalid,
+.form__field:required {
+  box-shadow: none
+}
+
+button {
+  background: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: .1rem;
+  padding: 1rem 3rem;
+  transition: .2s
+}
+
+button:hover {
+  letter-spacing: .2rem;
+  padding: 1.1rem 3.1rem;
+  background: var(--clr);
+  color: var(--clr);
+  animation: 3s infinite box
+}
+
+button::before {
+  inset: 2px
+}
+
+button span {
+  z-index: 1
+}
+
+button i {
+  position: absolute;
+  inset: 0;
+  display: block
+}
+
+button i::before {
+  left: 80%;
+  top: -2px
+}
+
+button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: 3s infinite move
+}
+
+button i::after {
+  left: 20%;
+  bottom: -2px
+}
+
+button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: 3s infinite move
+}
+
+@keyframes move {
+
+  0%,
+  100% {
+    transform: translateX(0)
+  }
+
+  50% {
+    transform: translateX(5px)
+  }
+}
+
+@keyframes box {
+
+  0%,
+  100% {
+    box-shadow: #27272c
+  }
+
+  50% {
+    box-shadow: 0 0 25px var(--clr)
+  }
+}
+
+#loader-container {
+  margin-top: 10px;
+  display: none;
+  justify-content: center;
+  text-align: center
+}
+
+#cancel {
+  display: none
+}
+
+.loader {
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 20px;
+  animation: 1s linear infinite alternate l1;
+  color: #ababad
+}
+
+.loader:before {
+  content: "جاري الحجز ..."
+}
+
+@keyframes l1 {
+  to {
+    opacity: 0
+  }
+}
