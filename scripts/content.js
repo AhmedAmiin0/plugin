@@ -2,14 +2,14 @@ async function book() {
   try {
     let url = window.location.href;
     let projectId = url.split("/")[5];
-    console.log(projectId);
+
     const response = await fetch(
       `https://sakani.sa/marketplaceApi/search/v1/projects/${projectId}/available-units`,
       {
         withCredentials: true,
       }
     ).then((res) => res.json());
-    // is status code is 401
+
     if (response.status === 401) {
       chrome.runtime.sendMessage({ action: "PleaseLoginNotification" });
       return;
