@@ -61,7 +61,6 @@ body {
 button {
   color: #fff;
   font-size: 1rem
-  
 }
 
 .container {
@@ -196,7 +195,7 @@ button:hover i::after {
   font-family: sans-serif;
   font-size: 20px;
   animation: 1s linear infinite alternate l1;
-  color: #ababad
+  color: #fff;
 }
 
 .loader:before {
@@ -207,4 +206,8 @@ button:hover i::after {
   to {
     opacity: 0
   }
+}
+
+input {
+  color: #27272c;
 }
