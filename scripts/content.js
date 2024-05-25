@@ -71,6 +71,7 @@ async function book() {
     chrome.runtime.sendMessage({ action: "bookingCompleted" });
   } catch (e) {
     console.log(e);
+    chrome.runtime.sendMessage({ action: "SomethingWentWrong" });
   } finally {
     chrome.runtime.sendMessage({ action: "stop-loader" });
   }
