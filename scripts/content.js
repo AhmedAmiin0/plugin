@@ -31,19 +31,14 @@ async function book() {
       chunkedUnits.push(temparray);
     }
 
-    let status = null;
-    let canBook = null;
+    let canBook = true;
     for (let chunk of chunkedUnits) {
       let i = 0;
-      if (status !== null) break;
+      if (!canBook) break;
       for (let unit of chunk) {
-        if (status !== null) break;
+        if (!canBook) break;
 
-        if (i === 0) {
-          console.log(i, status);
-          canBook = await validateUserCanBook(projectId);
-        }
-        console.log(canBook, status);
+        canBook = await validateUserCanBook(projectId);
 
         if (canBook) {
           await fetch(
@@ -67,16 +62,13 @@ async function book() {
             .then((data) => {
               console.log(data);
             });
-
-          if (i === 9) {
-            canBook = null;
-          }
         }
 
         i++;
       }
       await new Promise((r) => setTimeout(r, 2000));
     }
+    chrome.runtime.sendMessage({ action: "bookingCompleted" });
   } catch (e) {
     console.log(e);
   } finally {

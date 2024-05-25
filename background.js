@@ -46,6 +46,15 @@ chrome.runtime.onMessage.addListener((e, i, t) => {
     };
     chrome.notifications.create("notificationStartReserve", r),
       (stopLoader = !0);
+  } else if ("bookingCompleted" === e.action) {
+    let r = {
+      type: "basic",
+      iconUrl: "images/logo.png",
+      title: "Sakani Land Project Reservation",
+      message: "تم حجز الوحدات بنجاح",
+    };
+    chrome.notifications.create("notificationStartReserve", r),
+      (stopLoader = !0);
   }
 }),
   chrome.runtime.onMessage.addListener(function (e, i, t) {
