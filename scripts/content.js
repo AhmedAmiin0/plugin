@@ -1,7 +1,6 @@
 const stopReservationKey = "stopReservation";
 let stopReservation = localStorage.getItem(stopReservationKey) === "true";
 console.log("stopReservation", stopReservation);
-
 async function book() {
   localStorage.setItem(stopReservationKey, "true");
   try {
@@ -177,6 +176,7 @@ async function bookWithRequestNumber(requestNumber = 10) {
   } finally {
     chrome.runtime.sendMessage({ action: "stop-loader" });
     localStorage.setItem(stopReservationKey, "false");
+    chrome.runtime.sendMessage({ action: "ReservationRequestHasBeenSent" });
   }
 }
 
@@ -192,6 +192,5 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   }
   if (message.action === "cancel") {
     localStorage.setItem(stopReservationKey, "false");
-    console.log('a7aaaa')
   }
 });
